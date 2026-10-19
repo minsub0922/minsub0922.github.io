@@ -16,12 +16,12 @@ As of October 19, 2026 (Asia/Seoul).
 | NanoQuant | https://arxiv.org/abs/2602.06694 | Full title, four authors, ICML 2026 acceptance, official code at https://github.com/SamsungLabs/NanoQuant. |
 | RaBiT | https://arxiv.org/abs/2602.05367 | Full title, eight authors, ICML 2026 acceptance, official code at https://github.com/SamsungLabs/RaBiT. |
 | Equal contribution | https://d7chong.github.io/ and publication metadata | Hyochan Chong / Dongkyu Kim for NanoQuant; Youngcheon You / Banseok Lee for RaBiT. |
-| LangGraph learning resource | https://github.com/minsub0922/agent-rag-langgraph | Public README: tools, state graphs, ReAct, adaptive/self/corrective RAG, legal document QA. |
-| GraphRAG learning resource | https://github.com/minsub0922/graphrag-kg-rag | Public README: Neo4j / Cypher, news, ETF, financial report, and legal retrieval notebooks. |
 
 ## Editorial choices
 
 - No invented employment, awards, project URLs, social accounts, metrics, or publication claims.
+- Selected work contains only the four CV-based professional projects. The Hyundai entry groups networking incidents, private-cloud deployment/configuration, software-routing migration, and Ansible automation.
+- Educational Agentic RAG / GraphRAG repositories are removed from selected work.
 - Internal projects are not represented as open-source repositories. No internal source code or confidential screenshots are included.
 - The CV's estimated internal staffing-equivalent metric is omitted from site prose; the original supplied CV is linked as requested.
 - Publication descriptions summarize the method rather than adding unverified performance claims.

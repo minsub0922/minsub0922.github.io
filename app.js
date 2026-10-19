@@ -4,45 +4,49 @@ const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 const scholarURL = 'https://scholar.google.com/citations?user=WMDxCqsAAAAJ';
 let language = 'en';
-let activeFilter = 'all';
 let currentProject = null;
 let currentBib = '';
 
 const ko = {
-  skip:'본문으로 이동', navWork:'프로젝트', navResearch:'연구', navAbout:'소개', navContact:'연락처',
-  heroRole:'AI 시스템 엔지니어 · 서울', heroTitle:'모델에서 시작해,<br><span class="serif-word">작동하는 시스템으로.</span>',
-  heroIntro:'삼성리서치 AI/ML 엔지니어 <strong>최민섭</strong>입니다. 에이전트 시스템을 설계하고, 언어 모델을 학습·최적화하며, 실제 서비스로 구현하고 운영합니다.',
-  exploreWork:'프로젝트 살펴보기', viewCV:'이력서 보기', blog:'기술 블로그', currently:'현재 소속',
-  diagramCaption:'모델은 시작점. 시스템으로 완성합니다.', focusLine:'에이전트 AI · 모델 커스터마이징 · 프로덕션 엔지니어링',
-  workIndex:'01 / 주요 프로젝트', workTitle:'현장에서 작동하는 AI.', workIntro:'실제 운영 시스템부터 공개 실습 자료까지. 요구사항 정의에서 회귀 테스트까지 직접 연결합니다.',
-  filterAll:'전체', filterProduction:'프로덕션', filterOpen:'오픈소스', internalPlatform:'사내 플랫폼', axAward:'AX 어워드',
-  winmateDesc:'비즈니스 요구사항을 분석하고, 근거에 기반한 제안서와 편집 가능한 프레젠테이션을 생성하는 멀티 에이전트 플랫폼.',
-  viewCase:'설계 노트 보기', internalAgent:'사내 지식 에이전트', hackathonAward:'해커톤 수상',
-  srnoteDesc:'기업 문서와 저장소 컨텍스트를 연결하고, 에이전트별 지식·도구 접근을 분리한 셀프 호스팅 지식 에이전트.',
-  modelEngineering:'모델 엔지니어링', onDeviceTitle:'온디바이스 언어 모델',
-  onDeviceDesc:'4B·0.6B 모델의 학습과 후처리, 16개 언어·7개 태스크에 걸친 반복 가능한 평가 자동화.',
-  publicResource:'공개 학습 자료',
-  langgraphDesc:'도구 호출, 상태 기반 에이전트, 적응형 검색부터 법률 문서 질의응답까지 다루는 실습 노트북.',
-  graphragDesc:'Cypher 기초에서 뉴스·재무 보고서·법률 문서의 하이브리드 검색까지 이어지는 지식그래프 기반 RAG 실습.',
-  viewRepo:'저장소 살펴보기', moreGithub:'GitHub에서 더 많은 실험 보기',
-  researchIndex:'02 / 주요 연구', researchTitle:'더 작은 모델, 더 넓은 가능성.',
+  skip:'본문으로 이동', navWork:'프로젝트', navResearch:'연구', navAbout:'경력', navContact:'연락처',
+  heroTitle:'최민섭 <span class="name-native">Minseop Choi</span>', heroRole:'삼성리서치 <strong>AI/ML 엔지니어</strong>',
+  heroIntro:'삼성리서치에서 <strong>에이전트 AI, 언어 모델, 프로덕션 시스템</strong>을 개발합니다. 기업용 멀티 에이전트 플랫폼과 온디바이스 모델을 만들고, 학습·평가·관측성을 실제 서비스 운영으로 연결합니다.',
+  profileBackground:'이전에는 현대자동차에서 프라이빗 클라우드 인프라를 담당했습니다. AI & SW 마에스트로 멘토로 개발팀을 지원하며, ICML 2026에 채택된 NanoQuant와 RaBiT 논문의 공동 저자입니다.',
+  viewCV:'이력서', blog:'블로그', locationLabel:'거주지', educationLabel:'학력', languagesLabel:'언어',
+  basedSeoul:'대한민국 서울', profileEducation:'한국항공대학교 컴퓨터공학 학사', languages:'한국어 · 영어 · 일본어', education:'한국항공대학교 컴퓨터공학 학사',
+  workIndex:'프로젝트', workTitle:'주요 프로젝트', workIntro:'AI와 클라우드 인프라 분야에서 직접 설계·구현·운영한 프로젝트입니다.',
+  enterpriseAgents:'기업용 에이전트', axAward:'사내 AX 어워드',
+  winmateDesc:'요구사항 분석, 제품·솔루션 추천, 영업 전략, 편집 가능한 PPTX 생성까지 연결하는 사내 B2B 제안서 플랫폼을 설계·출시하고 운영합니다.',
+  winmateContribution1:'현업과 PRD·도메인 에이전트 서비스 계약을 정의하고, RAG·지식그래프 컨텍스트와 CLM-8B 기반 슬라이드 레이아웃 선택을 구현했습니다.',
+  winmateContribution2:'멀티 에이전트 오케스트레이션, Redis 게이트웨이 큐, 샌드박스 정책과 Langfuse·OpenTelemetry 기반 평가·추적 체계를 구축했습니다.',
+  viewCase:'프로젝트 상세', knowledgeAgent:'지식 에이전트', hackathonAward:'사내 해커톤 수상',
+  srnoteDesc:'개인 노트, 기업 문서, 프로젝트별 저장소 컨텍스트를 연결하는 셀프 호스팅 지식 에이전트를 개발했습니다.',
+  srnoteContribution1:'MCP로 Confluence·GitHub를 연결하고 분류, 요약, 프로젝트 범위의 하이브리드 검색을 구현했습니다.',
+  srnoteContribution2:'NVIDIA NeMoClaw / OpenShell로 에이전트별 지식·도구 접근을 격리하면서 자율 계획과 실행을 유지했습니다.',
+  modelEngineering:'온디바이스 AI', onDeviceTitle:'온디바이스 LLM 학습·평가',
+  onDeviceDesc:'4B 개체 추출 모델과 0.6B 멀티태스크 모델을 학습·배포하고, 반복 가능한 후처리·평가 파이프라인을 구축했습니다.',
+  ondeviceContribution1:'4B 모델에는 SFT / LoRA를, 0.6B 모델에는 지식 증류와 DPO / SFT를 적용했습니다.',
+  ondeviceContribution2:'GitHub Actions로 16개 언어·7개 태스크 평가를 자동화하고, LLM-as-a-Judge와 사람 피드백을 데이터 정제·학습 개선에 연결했습니다.',
+  cloudEngineering:'클라우드 인프라', hyundaiTitle:'프라이빗 클라우드 네트워크·운영 자동화',
+  hyundaiDesc:'OpenStack 프라이빗 클라우드를 운영하고, 하드웨어 라우터에서 소프트웨어 기반 라우팅으로의 전환을 담당했습니다.',
+  hyundaiContribution1:'프라이빗 클라우드의 네트워크 장애와 배포·설정 문제를 진단하고 해결했습니다.',
+  hyundaiContribution2:'Ansible로 프로비저닝, 헬스 체크, 장애 대응, 유지보수를 자동화하고 운영 런북을 표준화했습니다.',
+  researchIndex:'연구', researchTitle:'주요 논문',
   nanoDesc:'저랭크 이진 분해를 활용한 LLM의 1비트 및 1비트 미만 학습 후 양자화.',
-  rabitDesc:'잔차의 오차 보정 계층을 유지해 정확도와 추론 효율을 높이는 이진화 학습.',
-  researchNote:'* 공동 1저자. 도식은 개념을 설명하기 위한 일러스트입니다.',
-  aboutIndex:'03 / 시스템을 만드는 사람', aboutTitle:'만드는 사람.<br>연구하는 사람.<br><span class="serif-word">함께 성장하는 사람.</span>',
-  aboutIntro:'인프라, 모델, 에이전트, 그리고 사용하는 사람까지 연결합니다. 명확한 인터페이스와 측정 가능한 품질, 실패의 원인을 이해할 수 있는 시스템을 지향합니다.',
-  basedSeoul:'대한민국 서울', education:'한국항공대학교 컴퓨터공학 학사', languages:'한국어 · 영어 · 일본어',
+  rabitDesc:'잔차의 오차 보정 계층을 유지해 정확도와 추론 효율을 높이는 이진화 학습.', researchNote:'* 공동 1저자.',
+  aboutIndex:'배경', aboutTitle:'경력과 멘토링',
+  aboutIntro:'클라우드 인프라에서 온디바이스 AI, 기업용 에이전트 시스템으로 경험을 넓혀왔습니다. 개발과 함께 팀 멘토링과 AI 챌린지 문제 검수에도 참여합니다.',
   experienceTitle:'경력', axDate:'2026.08 — 현재',
   axExperience:'기업용 멀티 에이전트 아키텍처, 모델 커스터마이징, 평가 체계 구축 및 서비스 운영.',
   aiExperience:'온디바이스 LLM 학습·배포, 다국어 평가 자동화, 셀프 호스팅 지식 에이전트 개발.',
   hyundaiExperience:'OpenStack 네트워크와 프라이빗 클라우드 운영, 소프트웨어 라우팅 전환, Ansible 자동화.',
-  mentoringIndex:'지식과 경험을 나누는 일', mentoringTitle:'좋은 엔지니어링은 함께 만듭니다.', mentorDate:'2026 — 현재', mentorRole:'기술 멘토',
+  mentoringIndex:'멘토링과 기술 활동', mentoringTitle:'교육과 기술 활동', mentorDate:'2026 — 현재', mentorRole:'기술 멘토',
   mentorDesc:'과학기술정보통신부 장관 위촉. 에이전트 아키텍처, RAG, 모델 배포·평가를 멘토링하고 코딩 에이전트 실습 워크숍을 진행합니다.',
   reviewerRole:'문제 검수 / 평가', reviewerDesc:'문제·테스트 케이스·채점 기준의 정확성, 난이도, 평가 견고성을 검토했습니다.',
-  toolkitIndex:'04 / 엔지니어링 도구', toolkitTitle:'스택 전체를 연결합니다.', toolAgents:'에이전트와 검색', toolModels:'모델과 학습', toolQuality:'품질과 관측성', toolInfra:'인프라와 보안',
-  contactIndex:'05 / 연락하기', contactTitle:'함께 만들어요.<br><span class="serif-word">실제로 작동하는 것을.</span>',
-  contactDesc:'에이전트 AI, 효율적인 모델, 더 나은 시스템을 만드는 이야기를 환영합니다.', copyEmail:'이메일 복사', footerNote:'고민하고, 만들고, 개선합니다.',
-  engineeringNote:'엔지니어링 노트', internalNote:'사내 프로젝트입니다. 이력서를 기반으로 작성했으며 구현 코드는 공개하지 않습니다.', copyCitation:'인용 복사'
+  toolkitIndex:'기술', toolkitTitle:'주로 사용하는 도구', toolAgents:'에이전트와 검색', toolModels:'모델과 학습', toolQuality:'품질과 관측성', toolInfra:'인프라와 보안',
+  contactIndex:'연락처', contactTitle:'연락하기', contactDesc:'에이전트 AI, 효율적인 모델, 시스템 엔지니어링에 관한 이야기를 환영합니다.',
+  copyEmail:'이메일 복사', footerNote:'Minseop Choi', engineeringNote:'프로젝트 상세',
+  internalNote:'CV 기반의 실무 프로젝트 소개입니다. 사내 구현 코드는 공개하지 않습니다.', copyCitation:'인용 복사'
 };
 
 const en = {};
@@ -51,7 +55,7 @@ $$('[data-i18n-html]').forEach(el => { en[el.dataset.i18nHtml] = el.innerHTML; }
 
 const projects = {
   winmate: {
-    title:'Winmate / Proposal Studio',
+    title:'Winmate / Samsung Proposal Studio',
     en:{ lead:'An internal B2B proposal platform at Samsung Research, spanning requirement analysis, product and solution recommendations, sales strategy, and editable PPTX generation.',
       sections:[['The problem','Enterprise proposals bring together scattered requirements, product knowledge, business strategy, and document creation. The workflow needs consistent context and verifiable outputs across multiple steps.'],
       ['What I built',['Worked with business stakeholders to define PRDs, success criteria, domain agents, and reusable service contracts.','Combined RAG and knowledge-graph context with a CLM-8B decision model for slide-layout selection.','Designed orchestration with compressed global and task-local context, Redis-backed gateway queues, and sandbox execution policies.']],
@@ -63,9 +67,13 @@ const projects = {
     en:{lead:'A self-hosted knowledge agent for notes, enterprise documents, and project-specific repository context. An internal AI agent hackathon award winner.',sections:[['The problem','Knowledge is distributed across personal notes, enterprise documents, and source repositories. An autonomous agent must retrieve useful context while respecting boundaries between personal and enterprise knowledge.'],['What I built',['Connected Confluence and GitHub through MCP for classification, summarization, and project-scoped hybrid RAG.','Applied NVIDIA NeMoClaw / OpenShell for per-agent knowledge and tool-access isolation.','Preserved autonomous planning, retrieval, and tool execution while enforcing context and access boundaries.']],['Engineering focus','Explicitly scoped context, agent sandboxing, and controlled tool access are part of the system architecture.']]},
     ko:{lead:'개인 노트, 기업 문서, 프로젝트별 저장소 컨텍스트를 연결하는 셀프 호스팅 지식 에이전트입니다. 사내 AI 에이전트 해커톤에서 수상했습니다.',sections:[['해결하려는 문제','지식은 개인 노트, 기업 문서, 소스 저장소에 흩어져 있습니다. 자율 에이전트는 유용한 컨텍스트를 검색하면서도 개인·기업 지식의 경계를 지켜야 합니다.'],['구현한 내용',['MCP로 Confluence·GitHub를 연결하고 분류, 요약, 프로젝트 범위의 하이브리드 RAG를 구현했습니다.','NVIDIA NeMoClaw / OpenShell로 에이전트별 지식·도구 접근을 격리했습니다.','자율 계획·검색·도구 실행을 유지하면서 컨텍스트와 접근 경계를 적용했습니다.']],['설계의 중심','컨텍스트 범위, 에이전트 샌드박스, 도구 접근 제어를 시스템 아키텍처의 일부로 다뤘습니다.']]}
   },
-  ondevice:{title:'On-device language models',koTitle:'온디바이스 언어 모델',
+  ondevice:{title:'On-device LLM training & evaluation',koTitle:'온디바이스 LLM 학습·평가',
     en:{lead:'Model training, customization, evaluation, and deployment at Samsung Research / AI System, with repeatable post-training workflows.',sections:[['Models',['Trained and deployed a 4B entity-extraction model using SFT / LoRA with PyTorch and Hugging Face Transformers.','Built a 0.6B multitask model using knowledge distillation for mid-training and DPO / SFT for post-training.']],['Evaluation at scale','Built GitHub Actions-based post-training and evaluation automation across 16 languages and seven tasks, standardizing task / language-specific runs, benchmark execution, and regression checks.'],['Closing the loop','Combined LLM-as-a-Judge with human feedback to identify recurring failure patterns and turn them into data curation, training updates, and repeatable validation.']]},
     ko:{lead:'삼성리서치 AI System에서 진행한 모델 학습·커스터마이징·평가·배포와 반복 가능한 후처리 파이프라인 구축 경험입니다.',sections:[['모델',['PyTorch·Hugging Face Transformers로 SFT / LoRA 기반 4B 개체 추출 모델을 학습·배포했습니다.','지식 증류 기반 중간 학습과 DPO / SFT 후처리로 0.6B 멀티태스크 모델을 개발했습니다.']],['다국어 평가 자동화','16개 언어·7개 태스크의 후처리와 평가를 GitHub Actions로 자동화했습니다. 태스크·언어별 실행, 벤치마크 수행, 회귀 검증을 표준화했습니다.'],['평가에서 학습으로','LLM-as-a-Judge와 사람의 피드백을 결합해 반복되는 실패 패턴을 찾고 데이터 정제, 학습 개선, 재검증으로 연결했습니다.']]}
+  },
+  hyundai:{title:'Private-cloud networking & automation',koTitle:'프라이빗 클라우드 네트워크·운영 자동화',
+    en:{lead:'Cloud solution engineering at Hyundai Motor Company, March 2020 to August 2021. This project brings together private-cloud networking, routing migration, and operational automation.',sections:[['Private-cloud operations','Handled OpenStack network incidents and private-cloud deployment and configuration issues, including diagnosis and resolution of operational failures.'],['Routing migration','Owned the migration from legacy hardware-based routers to software-based routing.'],['Automation and runbooks','Used Ansible to automate provisioning, health checks, incident-response workflows, and maintenance. Standardized runbooks for repeatable diagnosis and configuration.']]},
+    ko:{lead:'2020년 3월부터 2021년 8월까지 현대자동차에서 수행한 클라우드 솔루션 엔지니어링입니다. 프라이빗 클라우드 네트워크 운영, 라우팅 전환, 운영 자동화를 하나의 프로젝트로 정리했습니다.',sections:[['프라이빗 클라우드 운영','OpenStack 네트워크 장애와 프라이빗 클라우드 배포·설정 문제를 진단하고 해결했습니다.'],['라우팅 전환','기존 하드웨어 기반 라우터에서 소프트웨어 기반 라우팅으로의 전환을 담당했습니다.'],['자동화와 운영 표준화','Ansible로 프로비저닝, 헬스 체크, 장애 대응 워크플로와 유지보수를 자동화했습니다. 반복 가능한 진단과 설정을 위해 운영 런북을 표준화했습니다.']]}
   }
 };
 
@@ -91,10 +99,6 @@ const bibs = {
 };
 
 function remember(key,value){try{localStorage.setItem(key,value);}catch(error){/* Browsing preferences are optional. */}}
-function updateCount(){
-  const count=$$('.project-card:not([hidden])').length;
-  $('.work-count').textContent=language==='ko'?`${String(count).padStart(2,'0')}개 프로젝트`:`${String(count).padStart(2,'0')} PROJECTS`;
-}
 function syncThemeButton(){
   const dark=document.documentElement.dataset.theme==='dark';
   $('#theme-toggle').setAttribute('aria-pressed',String(dark));
@@ -115,7 +119,7 @@ function setLanguage(next){
   });
   $('#copy-status').textContent=''; $('#bib-status').textContent='';
   document.title=next==='ko'?'최민섭 — AI 시스템 엔지니어':'Minseop Choi — AI Systems Engineer';
-  syncThemeButton();updateCount();remember('mc-language',next);
+  syncThemeButton();remember('mc-language',next);
   if($('#detail-dialog').open&&currentProject)renderProject(currentProject);
 }
 
@@ -148,13 +152,6 @@ $$('#mobile-nav a').forEach(link=>link.addEventListener('click',closeMenu));
 document.addEventListener('keydown',event=>{if(event.key==='Escape')closeMenu();});
 document.addEventListener('click',event=>{if(!event.target.closest('.site-header'))closeMenu();});
 const desktopQuery=matchMedia('(min-width:581px)');desktopQuery.addEventListener('change',event=>{if(event.matches)closeMenu();});
-
-$$('.filter-button').forEach(button=>button.addEventListener('click',()=>{
-  activeFilter=button.dataset.filter;
-  $$('.filter-button').forEach(b=>{const selected=b===button;b.classList.toggle('active',selected);b.setAttribute('aria-pressed',String(selected));});
-  $$('.project-card').forEach(card=>{card.hidden=activeFilter!=='all'&&card.dataset.category!==activeFilter;});
-  updateCount();
-}));
 
 $$('.case-button').forEach(button=>button.addEventListener('click',()=>{
   currentProject=button.dataset.project;renderProject(currentProject);$('#detail-dialog').showModal();document.body.classList.add('dialog-open');
