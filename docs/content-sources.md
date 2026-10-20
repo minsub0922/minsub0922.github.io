@@ -38,3 +38,7 @@ As of October 19, 2026 (Asia/Seoul).
 - The optimization narrative describes the user-confirmed technical scope. It does not invent product names, chip models, supported bit widths, speedups, deployment volumes, or architecture-specific implementation details.
 - Microscaling terminology checked against the primary paper, [Microscaling Data Formats for Deep Learning](https://arxiv.org/abs/2310.10537): per-block scaling with narrow floating-point or integer element representations. This source explains the format; it is not evidence of personal experience.
 - NanoQuant and RaBiT are identified as related research rather than proof that their exact methods shipped in a particular commercial product.
+
+## October 20, 2026 diagram revision
+
+Per the user's correction, Selected Work illustrations now represent general field concepts rather than the user's project implementation. No Winmate / SRNote names, personal model sizes or coverage, named quantization formats, or cloud tooling appear in the diagrams. Actual projects remain in card labels and popup details.

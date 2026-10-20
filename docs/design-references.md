@@ -17,6 +17,14 @@ The user-supplied portrait is positioned to the left of the identity and biograp
 
 Selected work is a responsive 2 × 2 grid. Each card pairs a simple original SVG diagram with project names and technical keywords. The groups are Agentic Systems (Winmate + SRNote); on-device LLM training and evaluation; on-device model optimization; and Hyundai cloud infrastructure. Long-form engineering details live in accessible modal dialogs. Winmate and SRNote remain separate narratives within their shared Agentic Systems group.
 
-Diagrams communicate agent orchestration, training / feedback, reduced-precision model execution on an NPU, and cloud / routing / operations workflows. They are conceptual illustrations, not literal production architecture diagrams or performance measurements. The model-optimization diagram presents model families, numeric formats, and NPU execution as a scope of work, not a claim that every model uses every format on a single shared deployment.
+The diagrams explain the general theme of each card, independently of Minseop's projects:
+
+- Agentic Systems: goal, agent reasoning, context / memory, tools, action, and observation feedback.
+- Training & Evaluation: a dataset, learned network parameters, evaluation, and a parameter-update loop.
+- Model Optimization: a dense model, a compact representation, and efficient device inference; memory, latency, and energy are qualitative objectives, not measured results.
+- Cloud Infrastructure: applications / services on virtualized compute / storage and networking / physical infrastructure.
+
+Project names, model sizes, language/task counts, specific formats, and vendor/tool names are excluded from the illustrations. The card labels and detailed project narratives retain the actual experience. Diagrams are original conceptual drawings; no quantitative size ratio or deployed architecture is implied.
+
 
 Publication entries are text-focused, with year, venue, authors, description, and paper / official code / Scholar links. Experience, mentorship, and technical focus follow. The portrait is supplied by the user. No fabricated screenshots or photographs are included. The layout uses a narrow reading width, restrained blue links, small contextual labels, and clear section boundaries. Core profile and project content remains readable without JavaScript; project details, Korean translation, theme preferences, and citation copying enhance it.

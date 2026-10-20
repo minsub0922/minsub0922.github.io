@@ -53,3 +53,15 @@ dialog{color:var(--text);background:var(--surface);border:1px solid var(--line);
 @media(max-width:480px){.page-width{width:calc(100% - 40px)}.projects-grid{margin-top:21px}.grid-content{padding:20px 21px 56px}.grid-content h3{font-size:20px;min-height:0}.grid-keywords{font-size:8px}.grid-project-names{font-size:11px}.project-open{padding:0 21px 17px}.project-visual{padding:13px 10px 0}.visual-label{font-size:7px;padding-inline:6px}.project-visual svg{max-height:none}.profile{gap:20px;grid-template-columns:90px minmax(0,1fr)}.profile-role{font-size:10px}:lang(ko) .grid-content h3{font-size:19px}}
 @media(max-width:360px){.profile{grid-template-columns:80px minmax(0,1fr);gap:18px 16px}.profile h1{font-size:25px}.profile .name-native{font-size:13px}.profile-role{font-size:9px}.profile-links{font-size:9px}.profile-links a+a:before{margin-inline:8px}.grid-content h3{font-size:18px}.grid-keywords{font-size:7.5px}:lang(ko) .profile h1{font-size:27px}:lang(ko) .profile .name-native{font-size:13px}}
 @media print{.profile{grid-template-columns:140px minmax(0,1fr)}.project-open{display:none}.project-card{break-inside:avoid}.projects-grid{gap:20px}.project-visual{padding:10px}.profile-copy{display:block}}
+
+/* Theme illustrations describe general concepts, independently of project details. */
+.diagram-agent-core{fill:var(--card-highlight);stroke:var(--card-accent);stroke-width:1.4}
+.diagram-core-label{fill:var(--text);font:500 13px var(--sans)}
+.diagram-network-edge{fill:none;stroke:var(--card-accent);stroke-width:.8;opacity:.28}
+.diagram-network-node{fill:var(--surface);stroke:var(--card-accent);stroke-width:1.3}
+.diagram-sample-line{fill:none;stroke:var(--card-accent);stroke-width:2;opacity:.4}
+.diagram-eval-ring{fill:var(--card-highlight);stroke:var(--card-accent);stroke-width:1}
+.diagram-check{fill:none;stroke:var(--card-accent);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.diagram-weight{fill:var(--card-accent)}
+.diagram-cloud-outline{fill:var(--surface);stroke:var(--card-accent);stroke-width:1.2;stroke-linejoin:round}
+.diagram-stack-bracket{fill:none;stroke:var(--card-accent);stroke-width:1;opacity:.4}
