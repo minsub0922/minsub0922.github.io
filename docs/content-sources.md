@@ -42,3 +42,10 @@ As of October 19, 2026 (Asia/Seoul).
 ## October 20, 2026 diagram revision
 
 Per the user's correction, Selected Work illustrations now represent general field concepts rather than the user's project implementation. No Winmate / SRNote names, personal model sizes or coverage, named quantization formats, or cloud tooling appear in the diagrams. Actual projects remain in card labels and popup details.
+
+## October 20, 2026 book addition
+
+- The user identifies 파닥파닥 Flutter as their published book. The publisher's [book introduction](https://edu.goorm.io/learn/lecture/17450/파닥파닥-flutter-빠르고-가볍게-flutter-흔들기/lesson/843196/책-소개) lists the six co-authors in this order: 김헌진, 이재경, 최민섭, 이한결, 유광우, 이상우, and links the official [example-code organization](https://github.com/padak-flutter).
+- [RIDI's ebook record](https://ridibooks.com/books/3419000002) confirms the publisher as 구름MEDIA, ebook publication date as April 10, 2020, and ISBN as 9791196640132.
+- The year/date displayed on the site and in BibTeX explicitly refer to the ebook edition. No print-edition publication date is inferred.
+- The description is an original brief summary of the book's introduction: Dart, Flutter widgets, and practical cross-platform app development. No book text or cover image is reproduced.

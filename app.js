@@ -8,7 +8,7 @@ let currentProject = null;
 let currentBib = '';
 
 const ko = {
-  skip:'본문으로 이동', navWork:'프로젝트', navResearch:'연구', navAbout:'경력', navContact:'연락처',
+  skip:'본문으로 이동', navWork:'프로젝트', navResearch:'논문·저서', navAbout:'경력', navContact:'연락처',
   heroTitle:'최민섭 <span class="name-native">Minseop Choi</span>', heroRole:'삼성리서치 <strong>AI/ML 엔지니어</strong>',
   heroIntro:'삼성리서치에서 <strong>에이전트 AI, 언어 모델, 프로덕션 시스템</strong>을 개발합니다. 기업용 멀티 에이전트 플랫폼과 온디바이스 모델을 만들고, 모델 학습·최적화·평가를 실제 서비스 운영으로 연결합니다.',
   profileBackground:'이전에는 현대자동차에서 프라이빗 클라우드 인프라를 담당했습니다. AI & SW 마에스트로 멘토로 개발팀을 지원하며, ICML 2026에 채택된 NanoQuant와 RaBiT 논문의 공동 저자입니다.',
@@ -35,7 +35,10 @@ const ko = {
   hyundaiDesc:'OpenStack 프라이빗 클라우드를 운영하고, 하드웨어 라우터에서 소프트웨어 기반 라우팅으로의 전환을 담당했습니다.',
   hyundaiContribution1:'프라이빗 클라우드의 네트워크 장애와 배포·설정 문제를 진단하고 해결했습니다.',
   hyundaiContribution2:'Ansible로 프로비저닝, 헬스 체크, 장애 대응, 유지보수를 자동화하고 운영 런북을 표준화했습니다.',
-  researchIndex:'연구', researchTitle:'주요 논문',
+  researchIndex:'출판물', researchTitle:'논문과 저서',
+  bookBadge:'저서', bookFormat:'한국어 전자책', readBook:'온라인 도서',
+  bookDesc:'Dart 기초부터 Flutter 위젯과 앱 제작 실습까지 다루는 크로스플랫폼 모바일 앱 개발 입문서의 공저자입니다.',
+  bookEdition:'전자책 발행: 2020년 4월 10일',
   nanoDesc:'저랭크 이진 분해를 활용한 LLM의 1비트 및 1비트 미만 학습 후 양자화.',
   rabitDesc:'잔차의 오차 보정 계층을 유지해 정확도와 추론 효율을 높이는 이진화 학습.', researchNote:'* 공동 1저자.',
   aboutIndex:'배경', aboutTitle:'경력과 멘토링',
@@ -58,6 +61,16 @@ $$('[data-i18n]').forEach(el => { en[el.dataset.i18n] = el.textContent; });
 $$('[data-i18n-html]').forEach(el => { en[el.dataset.i18nHtml] = el.innerHTML; });
 
 const bibs = {
+  padakflutter:`@book{kim2020padakflutter,
+  title     = {파닥파닥 Flutter},
+  author    = {김헌진 and 이재경 and 최민섭 and 이한결 and 유광우 and 이상우},
+  publisher = {구름MEDIA},
+  year      = {2020},
+  isbn      = {9791196640132},
+  note      = {Korean eBook edition, published 2020-04-10},
+  url       = {https://ridibooks.com/books/3419000002}
+}`,
+
   nanoquant:`@inproceedings{chong2026nanoquant,
   title     = {NanoQuant: Efficient Sub-1-Bit Quantization of Large Language Models},
   author    = {Chong, Hyochan and Kim, Dongkyu and Kim, Changdong and Choi, Minseop},

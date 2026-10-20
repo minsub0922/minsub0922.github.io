@@ -65,3 +65,6 @@ dialog{color:var(--text);background:var(--surface);border:1px solid var(--line);
 .diagram-weight{fill:var(--card-accent)}
 .diagram-cloud-outline{fill:var(--surface);stroke:var(--card-accent);stroke-width:1.2;stroke-linejoin:round}
 .diagram-stack-bracket{fill:none;stroke:var(--card-accent);stroke-width:1;opacity:.4}
+
+/* Books share the publication layout with an explicit edition date. */
+.book-edition{font:8px/1.8 var(--mono);color:var(--muted);margin-top:7px}
